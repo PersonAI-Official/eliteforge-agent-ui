@@ -27,9 +27,9 @@ RPC 客户端 / AG-UI 事件
 
 ```sh
 npm install --save-exact \
-  @personai/agent-ui-chat-react-native@1.0.0-preview.29 \
-  @personai/agent-ui-a2ui-react-native@1.0.0-preview.29 \
-  @personai/agent-ui-chat-core@1.0.0-preview.29
+  @personai/agent-ui-chat-react-native@1.0.0-preview.30 \
+  @personai/agent-ui-a2ui-react-native@1.0.0-preview.30 \
+  @personai/agent-ui-chat-core@1.0.0-preview.30
 ```
 
 `react`（>= 19.2）与 `react-native`（>= 0.70）由宿主提供，都是 peer dependency。两个 RN 包不导出样式入口，主题通过 JS token 传入，不涉及 CSS。
