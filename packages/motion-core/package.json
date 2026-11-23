@@ -1,6 +1,6 @@
 {
   "name": "@personai/agent-ui-motion-core",
-  "version": "1.0.0-preview.30",
+  "version": "1.0.0-preview.31",
   "type": "module",
   "files": [
     "dist",

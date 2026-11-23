@@ -5,7 +5,7 @@
 ## 安装
 
 ```sh
-npm install --save-exact @personai/agent-ui-terminal@1.0.0-preview.4
+npm install --save-exact @personai/agent-ui-terminal@1.0.0-preview.31
 ```
 
 应用入口需导入 `@personai/agent-ui-terminal/styles.css`。包内 `npm run dev` 提供本地模拟宿主演示。
@@ -82,3 +82,9 @@ const terminal = initTerminal({
 `initTerminal` 还支持 locale、文案覆盖、xterm 主题/字体选项、命令分流规则和降级状态回调。`dispose()` 会停止组件监听、AI 请求并释放传输。
 
 本包固定使用 xterm.js 5.5.0，并在安装时应用一处范围受限的输入补丁，避免 macOS 中文输入法提交时丢字或重复。升级 xterm 版本时，补丁会拒绝应用；需先验证对应版本的输入行为。
+
+## 运行期工具详情
+
+Agent 活动区中的思考、工具组和单个工具都使用原生 `<details>`。运行期间即可展开和收起；流式事件到达只更新标题与内容，不会把用户已展开的详情重新折叠，运行结束也不重置展开状态。展开后可查看工具参数和已经返回的结果，结果稍后到达时继续写入同一项。
+
+宿主验收时在真实后端确认：工具仍在运行、以及工具已结束但整轮未结束时都能展开；新事件到达后已展开项保持打开；“终止会话”按钮仍能停止当前运行；结束后主题切换、终端输入和 `dispose()` 无回归。

@@ -5,7 +5,7 @@ A2UI 协议的 React Native 渲染器。协议解析、Catalog、数据绑定、
 ## 安装
 
 ```sh
-npm install --save-exact @personai/agent-ui-a2ui-react-native@1.0.0-preview.30
+npm install --save-exact @personai/agent-ui-a2ui-react-native@1.0.0-preview.31
 ```
 
 peer dependencies：`react`（>= 19.2）、`react-native`（>= 0.70）。

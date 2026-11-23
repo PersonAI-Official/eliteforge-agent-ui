@@ -1,5 +1,6 @@
 import { html, nothing } from "lit-html";
 import { guard } from "lit-html/directives/guard.js";
+import { repeat } from "lit-html/directives/repeat.js";
 import {
   buildAguiUserWorkCards,
   currentAguiWorkSnapshot,
@@ -67,8 +68,16 @@ export function renderAgentActivity(state: AgentActivityState) {
 
   return html`<section class="ai-terminal-model-session__activity" aria-label=${state.i18n.t("activityLabel")}>
     ${snapshot && !cards.length ? renderActivitySnapshot(snapshot, state) : nothing}
-    ${visibleCards.map((card) => renderActivityCard(card, state, events))}
+    ${repeat(visibleCards, activityCardKey, (card) => renderActivityCard(card, state, events))}
   </section>`;
+}
+
+function activityCardKey(card: ReturnType<typeof buildAguiUserWorkCards>[number]): string {
+  return card.kind === "reasoning"
+    ? `reasoning:${card.value.runId}`
+    : card.kind === "toolGroup"
+      ? `tool-group:${card.value.id}`
+      : `tool:${card.value.id}`;
 }
 
 function mergeReasoningCards(
@@ -133,8 +142,8 @@ function renderActivityCard(
   if (card.kind === "reasoning") {
     const summary = activityStatusLabel(state, events, i18n);
     const detail = card.value.content || card.value.summary;
-    return html`<details class="ai-terminal-model-session__activity-item" ?open=${state.activityComplete ? nothing : false} @toggle=${(event: Event) => closeActivityToggle(event, state)}>
-      <summary @click=${(event: MouseEvent) => preventActivityToggle(event, state)}>
+    return html`<details class="ai-terminal-model-session__activity-item">
+      <summary>
         ${hasRunError(events) ? nothing : renderActivityChevron()}
         <span class=${activityStatusClass(state)}>${summary}</span>
       </summary>
@@ -151,10 +160,10 @@ function renderActivityCard(
 
   if (card.kind === "toolGroup") {
     const tools = card.value.toolCards.filter((tool) => tool.started);
-    return html`<details class="ai-terminal-model-session__activity-item" ?open=${state.activityComplete ? nothing : false} @toggle=${(event: Event) => closeActivityToggle(event, state)}>
-      <summary @click=${(event: MouseEvent) => preventActivityToggle(event, state)}>${renderActivityChevron()}<span>${i18n.t("toolsRan")} ${tools.length}</span></summary>
+    return html`<details class="ai-terminal-model-session__activity-item">
+      <summary>${renderActivityChevron()}<span>${i18n.t("toolsRan")} ${tools.length}</span></summary>
       <div class="ai-terminal-model-session__activity-list">
-        ${tools.map((tool) => renderToolActivity(tool, i18n, state))}
+        ${repeat(tools, (tool) => tool.id, (tool) => renderToolActivity(tool, i18n, state))}
       </div>
     </details>`;
   }
@@ -174,8 +183,8 @@ function renderToolActivity(
   const presentation = presentToolCall(tool.toolName, tool.args, { locale: i18n.locale });
   const label = presentation.title || i18n.t("toolUnnamed");
 
-  return html`<details class="ai-terminal-model-session__activity-item ai-terminal-model-session__activity-item--tool" ?open=${state.activityComplete ? nothing : false} @toggle=${(event: Event) => closeActivityToggle(event, state)}>
-    <summary @click=${(event: MouseEvent) => preventActivityToggle(event, state)}>${renderActivityChevron()}<span>${running ? i18n.t("toolRunning") : i18n.t("toolRan")} ${label}</span></summary>
+  return html`<details class="ai-terminal-model-session__activity-item ai-terminal-model-session__activity-item--tool">
+    <summary>${renderActivityChevron()}<span>${running ? i18n.t("toolRunning") : i18n.t("toolRan")} ${label}</span></summary>
     ${args || result
       ? html`<div class="ai-terminal-model-session__activity-detail">
           ${args
@@ -199,24 +208,12 @@ function renderNestedToolGroup(
 ) {
   const startedTools = tools.filter((tool) => tool.started);
   if (!startedTools.length) return nothing;
-  return html`<details class="ai-terminal-model-session__activity-item ai-terminal-model-session__activity-item--nested" ?open=${state.activityComplete ? nothing : false} @toggle=${(event: Event) => closeActivityToggle(event, state)}>
-    <summary @click=${(event: MouseEvent) => preventActivityToggle(event, state)}>${renderActivityChevron()}<span>${i18n.t("toolsRan")} ${startedTools.length}</span></summary>
+  return html`<details class="ai-terminal-model-session__activity-item ai-terminal-model-session__activity-item--nested">
+    <summary>${renderActivityChevron()}<span>${i18n.t("toolsRan")} ${startedTools.length}</span></summary>
     <div class="ai-terminal-model-session__activity-list">
-      ${startedTools.map((tool) => renderToolActivity(tool, i18n, state))}
+      ${repeat(startedTools, (tool) => tool.id, (tool) => renderToolActivity(tool, i18n, state))}
     </div>
   </details>`;
-}
-
-function preventActivityToggle(event: MouseEvent, state: AgentActivityState) {
-  if (!state.activityComplete) {
-    event.preventDefault();
-  }
-}
-
-function closeActivityToggle(event: Event, state: AgentActivityState) {
-  if (!state.activityComplete) {
-    (event.currentTarget as HTMLDetailsElement).open = false;
-  }
 }
 
 function renderActivityChevron() {

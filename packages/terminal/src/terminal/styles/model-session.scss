@@ -64,13 +64,6 @@
   overflow-y: auto;
 }
 
-.ai-terminal-model-session--running
-  .ai-terminal-model-session__activity-item
-  > summary {
-  cursor: default;
-  pointer-events: none;
-}
-
 .ai-terminal-model-session__cancel-button {
   position: absolute;
   right: 10px;

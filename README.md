@@ -99,7 +99,7 @@ npm whoami --registry=https://registry.npmjs.org/
 for package in \
   a2ui-core composer-core motion-core chat-theme \
   motion-react motion-vue composer-react composer-vue \
-  a2ui-react a2ui-vue chat-core chat-react chat-vue terminal
+  a2ui-react a2ui-vue a2ui-react-native chat-core chat-react chat-vue chat-react-native terminal
 do
   npm publish --workspace "@personai/agent-ui-$package" --tag latest || break
 done
@@ -126,3 +126,5 @@ Finished context-compaction notices can expand block details supplied through `H
 `1.0.0-preview.9` 为 React 和 Vue 工具组中执行中的圆点添加呼吸动画，并遵循系统减少动态效果设置。
 
 `1.0.0-preview.10` 在 React 和 Vue 工作过程的每条消息悬停或聚焦时显示复制按钮和时间，触屏设备始终显示。当前源码移除了工作过程内的逐条操作行：复制和时间只保留在最终答复上，中间步骤下方不再预留操作行高度。
+
+`1.0.0-preview.31` 起，浏览器终端的思考、工具组和单个工具在运行中即可展开和收起。流式事件只更新内容，不会折叠用户已展开的详情，运行结束也不重置展开状态；工具参数与结果可在运行中和结束后查看，“终止会话”行为不变。详见终端包 README 与接入文档。

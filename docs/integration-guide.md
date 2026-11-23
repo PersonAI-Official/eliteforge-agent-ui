@@ -43,22 +43,22 @@ Terminal 组件
 @personai:registry=https://registry.npmjs.org/
 ```
 
-按需安装并固定同一版本。以下以当前仓库版本 `1.0.0-preview.7` 为例；升级时同时更新所有使用的 Agent UI 包和锁文件。React 聊天示例：
+按需安装并固定同一版本。以下以当前仓库版本 `1.0.0-preview.31` 为例；升级时同时更新所有使用的 Agent UI 包和锁文件。React 聊天示例：
 
 ```sh
-npm install --save-exact @personai/agent-ui-chat-react@1.0.0-preview.7 @personai/agent-ui-chat-core@1.0.0-preview.7 @personai/agent-ui-chat-theme@1.0.0-preview.7
+npm install --save-exact @personai/agent-ui-chat-react@1.0.0-preview.31 @personai/agent-ui-chat-core@1.0.0-preview.31 @personai/agent-ui-chat-theme@1.0.0-preview.31
 ```
 
 Vue 聊天示例：
 
 ```sh
-npm install --save-exact @personai/agent-ui-chat-vue@1.0.0-preview.7 @personai/agent-ui-chat-core@1.0.0-preview.7 @personai/agent-ui-chat-theme@1.0.0-preview.7
+npm install --save-exact @personai/agent-ui-chat-vue@1.0.0-preview.31 @personai/agent-ui-chat-core@1.0.0-preview.31 @personai/agent-ui-chat-theme@1.0.0-preview.31
 ```
 
 终端示例：
 
 ```sh
-npm install --save-exact @personai/agent-ui-terminal@1.0.0-preview.7
+npm install --save-exact @personai/agent-ui-terminal@1.0.0-preview.31
 ```
 
 安装时还要满足对应包声明的 React、Vue 和 xterm peer dependencies。chat-theme 包含全局根色板与页面样式；已有设计系统可省略该包及其 import，改为提供公开 CSS 变量。终端安装脚本会修补 xterm 输入法行为，使用受限安装脚本策略时应核查并允许该包所需脚本。
@@ -299,6 +299,8 @@ terminal.dispose();
 `1.0.0-preview.3` 起，返回实例提供 `clear()`、`getSelection()` 和 `focus()`，用于 xterm 清屏、读取选中文本和聚焦输入；详见终端包 README。`1.0.0-preview.2` 不包含这些方法。
 
 AI 是可选的：省略 `ai` 后，普通终端仍可使用。`createTerminalTransport` 使用 Socket.IO 连接 PTY 服务；若现有服务不是兼容协议，请实现并注入 `TerminalTransport`。若要自定义 AI 通信方式，实现 `AITransport` 的 `request` 和 `stream` 方法。
+
+终端活动区保留原生 `<details>` 交互：思考、工具组和单个工具在运行中即可展开/收起，流式事件只更新内容，不重置用户选择的展开状态，运行结束时也不自动折叠。展开后显示工具参数与已返回结果。接入验收应在真实后端覆盖：工具运行中可展开、工具结束但整轮未结束时仍可展开、新事件到达后已展开项保持打开，以及“终止会话”、主题切换、终端输入和资源释放无回归。
 
 终端服务至少要负责认证用户、授权工作目录、安全创建 PTY、限制资源并在会话结束时回收进程。不要把 shell 启动权限或服务端凭据放进浏览器代码。`dispose()` 会释放终端、传输和未完成的 AI 请求。
 
