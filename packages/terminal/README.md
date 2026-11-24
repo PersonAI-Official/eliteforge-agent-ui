@@ -5,7 +5,7 @@
 ## 安装
 
 ```sh
-npm install --save-exact @personai/agent-ui-terminal@1.0.0-preview.32
+npm install --save-exact @personai/agent-ui-terminal@1.0.0-preview.33
 ```
 
 应用入口需导入 `@personai/agent-ui-terminal/styles.css`。包内 `npm run dev` 提供本地模拟宿主演示。

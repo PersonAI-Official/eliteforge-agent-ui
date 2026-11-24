@@ -101,7 +101,7 @@ export function ChatArtifacts({
           const pending = state === "pending";
           const failed = state === "failed";
           const actions = actionsFor(item);
-          const [primary, ...overflow] = actions;
+          const [primary, secondary, ...overflow] = actions;
           const hint = itemHint(item, labels);
           const retryAction = failed ? retryActionFor(item) : undefined;
           return (
@@ -142,6 +142,17 @@ export function ChatArtifacts({
                   >
                     {actionIcon(primary)}
                     <span>{labels.action(primary)}</span>
+                  </button>
+                ) : null}
+                {secondary ? (
+                  <button
+                    className="ef-chat__artifacts-action"
+                    type="button"
+                    disabled={pending}
+                    onClick={() => dispatch(item, secondary)}
+                  >
+                    {actionIcon(secondary)}
+                    <span>{labels.action(secondary)}</span>
                   </button>
                 ) : null}
                 {overflow.length ? (

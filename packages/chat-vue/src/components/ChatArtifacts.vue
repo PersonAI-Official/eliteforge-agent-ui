@@ -68,7 +68,16 @@ function primaryActionLabel(item: ChatArtifactItem) {
 }
 
 function overflowActions(item: ChatArtifactItem) {
-  return actionsFor(item).slice(1);
+  return actionsFor(item).slice(2);
+}
+
+function secondaryAction(item: ChatArtifactItem) {
+  return actionsFor(item)[1];
+}
+
+function secondaryActionLabel(item: ChatArtifactItem) {
+  const action = secondaryAction(item);
+  return action ? labels.value.action(action) : "";
 }
 
 function retryActionFor(item: ChatArtifactItem) {
@@ -137,6 +146,16 @@ function closeMenuOnBlur(event: FocusEvent, itemId: string) {
           >
             <component :is="actionIcon(primaryAction(item))" aria-hidden="true" :size="14" />
             <span>{{ primaryActionLabel(item) }}</span>
+          </button>
+          <button
+            v-if="secondaryAction(item)"
+            class="ef-chat__artifacts-action"
+            type="button"
+            :disabled="stateOf(item) === 'pending'"
+            @click="dispatch(item, secondaryAction(item))"
+          >
+            <component :is="actionIcon(secondaryAction(item))" aria-hidden="true" :size="14" />
+            <span>{{ secondaryActionLabel(item) }}</span>
           </button>
           <div
             v-if="overflowActions(item).length"

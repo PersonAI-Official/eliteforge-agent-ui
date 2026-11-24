@@ -1,5 +1,9 @@
 # @personai/agent-ui-chat-vue
 
+## 1.0.0-preview.33
+
+- 将交付文件的前两个可用动作直接显示，其他动作仍收在溢出菜单。
+- 统一内部依赖版本为 `1.0.0-preview.33`。
 
 ## 1.0.0-preview.29
 

@@ -1,6 +1,6 @@
 {
   "name": "@personai/agent-ui-terminal",
-  "version": "1.0.0-preview.32",
+  "version": "1.0.0-preview.33",
   "type": "module",
   "files": [
     "dist",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@microsoft/fetch-event-source": "^2.0.1",
-    "@personai/agent-ui-chat-core": "1.0.0-preview.32",
+    "@personai/agent-ui-chat-core": "1.0.0-preview.33",
     "@preact/signals-core": "^1.14.4",
     "@xterm/addon-fit": "^0.10.0",
     "@xterm/addon-web-links": "^0.11.0",

@@ -1,6 +1,6 @@
 {
   "name": "@personai/agent-ui-composer-vue",
-  "version": "1.0.0-preview.32",
+  "version": "1.0.0-preview.33",
   "type": "module",
   "files": [
     "dist",
@@ -30,7 +30,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@personai/agent-ui-composer-core": "1.0.0-preview.32"
+    "@personai/agent-ui-composer-core": "1.0.0-preview.33"
   },
   "peerDependencies": {
     "vue": "^3.5.18",
