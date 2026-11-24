@@ -146,7 +146,7 @@ export function ChatArtifacts({
                 ) : null}
                 {secondary ? (
                   <button
-                    className="ef-chat__artifacts-action"
+                    className="ef-chat__artifacts-action ef-chat__artifacts-action--primary"
                     type="button"
                     disabled={pending}
                     onClick={() => dispatch(item, secondary)}

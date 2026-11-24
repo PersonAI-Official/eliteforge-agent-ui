@@ -149,7 +149,7 @@ function closeMenuOnBlur(event: FocusEvent, itemId: string) {
           </button>
           <button
             v-if="secondaryAction(item)"
-            class="ef-chat__artifacts-action"
+            class="ef-chat__artifacts-action ef-chat__artifacts-action--primary"
             type="button"
             :disabled="stateOf(item) === 'pending'"
             @click="dispatch(item, secondaryAction(item))"

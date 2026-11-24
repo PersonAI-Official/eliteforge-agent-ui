@@ -1,6 +1,6 @@
 {
   "name": "@personai/agent-ui-a2ui-react-native",
-  "version": "1.0.0-preview.33",
+  "version": "1.0.0-preview.34",
   "type": "module",
   "files": [
     "dist",
@@ -25,7 +25,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@personai/agent-ui-a2ui-core": "1.0.0-preview.33"
+    "@personai/agent-ui-a2ui-core": "1.0.0-preview.34"
   },
   "peerDependencies": {
     "react": "^19.2.5",
