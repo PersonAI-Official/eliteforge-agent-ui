@@ -43,22 +43,22 @@ Terminal 组件
 @personai:registry=https://registry.npmjs.org/
 ```
 
-按需安装并固定同一版本。以下以当前仓库版本 `1.0.0-preview.31` 为例；升级时同时更新所有使用的 Agent UI 包和锁文件。React 聊天示例：
+按需安装并固定同一版本。以下以当前仓库版本 `1.0.0-preview.32` 为例；升级时同时更新所有使用的 Agent UI 包和锁文件。React 聊天示例：
 
 ```sh
-npm install --save-exact @personai/agent-ui-chat-react@1.0.0-preview.31 @personai/agent-ui-chat-core@1.0.0-preview.31 @personai/agent-ui-chat-theme@1.0.0-preview.31
+npm install --save-exact @personai/agent-ui-chat-react@1.0.0-preview.32 @personai/agent-ui-chat-core@1.0.0-preview.32 @personai/agent-ui-chat-theme@1.0.0-preview.32
 ```
 
 Vue 聊天示例：
 
 ```sh
-npm install --save-exact @personai/agent-ui-chat-vue@1.0.0-preview.31 @personai/agent-ui-chat-core@1.0.0-preview.31 @personai/agent-ui-chat-theme@1.0.0-preview.31
+npm install --save-exact @personai/agent-ui-chat-vue@1.0.0-preview.32 @personai/agent-ui-chat-core@1.0.0-preview.32 @personai/agent-ui-chat-theme@1.0.0-preview.32
 ```
 
 终端示例：
 
 ```sh
-npm install --save-exact @personai/agent-ui-terminal@1.0.0-preview.31
+npm install --save-exact @personai/agent-ui-terminal@1.0.0-preview.32
 ```
 
 安装时还要满足对应包声明的 React、Vue 和 xterm peer dependencies。chat-theme 包含全局根色板与页面样式；已有设计系统可省略该包及其 import，改为提供公开 CSS 变量。终端安装脚本会修补 xterm 输入法行为，使用受限安装脚本策略时应核查并允许该包所需脚本。

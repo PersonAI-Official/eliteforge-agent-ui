@@ -1,6 +1,6 @@
 {
   "name": "@personai/agent-ui-motion-react",
-  "version": "1.0.0-preview.31",
+  "version": "1.0.0-preview.32",
   "type": "module",
   "files": [
     "dist",
@@ -22,7 +22,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@personai/agent-ui-motion-core": "1.0.0-preview.31"
+    "@personai/agent-ui-motion-core": "1.0.0-preview.32"
   },
   "peerDependencies": {
     "react": "^19.2.5"

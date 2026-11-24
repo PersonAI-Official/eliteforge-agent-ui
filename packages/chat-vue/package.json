@@ -1,6 +1,6 @@
 {
   "name": "@personai/agent-ui-chat-vue",
-  "version": "1.0.0-preview.31",
+  "version": "1.0.0-preview.32",
   "type": "module",
   "files": [
     "dist",
@@ -26,14 +26,14 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@personai/agent-ui-chat-core": "1.0.0-preview.31",
+    "@personai/agent-ui-chat-core": "1.0.0-preview.32",
     "github-markdown-css": "^5.9.0",
     "lucide-vue-next": "^1.0.0",
     "markdown-it": "^14.2.0",
-    "@personai/agent-ui-a2ui-vue": "1.0.0-preview.31",
-    "@personai/agent-ui-a2ui-core": "1.0.0-preview.31",
-    "@personai/agent-ui-motion-vue": "1.0.0-preview.31",
-    "@personai/agent-ui-composer-vue": "1.0.0-preview.31"
+    "@personai/agent-ui-a2ui-vue": "1.0.0-preview.32",
+    "@personai/agent-ui-a2ui-core": "1.0.0-preview.32",
+    "@personai/agent-ui-motion-vue": "1.0.0-preview.32",
+    "@personai/agent-ui-composer-vue": "1.0.0-preview.32"
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
@@ -41,7 +41,7 @@
   },
   "peerDependencies": {
     "vue": "^3.5.18",
-    "@personai/agent-ui-chat-core": "1.0.0-preview.31",
+    "@personai/agent-ui-chat-core": "1.0.0-preview.32",
     "lucide-vue-next": "^1.0.0",
     "markdown-it": "^14.2.0"
   },
